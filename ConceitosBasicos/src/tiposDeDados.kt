@@ -19,14 +19,14 @@ fun valores2(vec: Any):Unit{
 // eh um tipo de dado porem nao tem retorno
 // caso mais frequente de uso quando quer retornar uma excessao de funçao
 fun valores3(vec: Any):Nothing{
-
+    save()
 }
 
 // Ex: nothing
 fun save():Nothing{
-    TODO()"Nao houve tempo."
+    TODO("Nao houve tempo.")
 }
 
 fun update():Nothing{
-    TODO()"Nao houve tempo."
+    TODO("Nao houve tempo.")
 }
