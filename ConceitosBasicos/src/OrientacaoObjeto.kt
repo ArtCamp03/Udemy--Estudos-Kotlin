@@ -13,7 +13,6 @@ class Pessoa(var p1:String = "Ninguem"){
         return estado
     }
 
-
 }
 
 // construtor
