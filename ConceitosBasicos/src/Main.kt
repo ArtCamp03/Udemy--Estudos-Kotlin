@@ -1,10 +1,14 @@
 fun main(){
-    println(media1(25f,14f))
-    println(media2(28f,14f,3,"hoje"))
+
+    var p: Planeta = Planeta()
+    p.nome
+
+    //println(media1(25f,14f))
+    //println(media2(28f,14f,3,"hoje"))
 
     // permite a passagem de qualuer parametro
     // Conjunto de elementos
-    arrayOf(1,2,3,4,"f")
+    //arrayOf(1,2,3,4,"f")
 }
 
 // quando varag esta no parametro ele tem qe ser util
