@@ -4,6 +4,7 @@ fun main(){
     p.acordar()
     p.dormir()
 
+    // with eh uma funçao qe utiliza varios metodos de uma ves
     with(p) {
         acordar()
         dormir()
