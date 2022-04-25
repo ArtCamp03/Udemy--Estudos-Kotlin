@@ -1,5 +1,17 @@
+//* Herança
+//* modificadores de visibilidade
+//* private pode ser usado no metodo , variavel ou na classe
+// modificadores public , protected
+
+private class X() //limita a classe somente a o arquyivo em que ela esta
+
 open class Eletronico(var marca: String){
-    fun ligar() {
+    //metodo visto pela classe e pela classe que herda
+    protected fun ativarCorrente() {}
+
+    // metodo visto apenas pela classe
+    private fun ligar() {
+        ativarCorrente()
         println("Computador Ligado ..")
     }
     fun desligar() {
