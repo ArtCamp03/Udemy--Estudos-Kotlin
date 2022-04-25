@@ -20,5 +20,4 @@ fun main(){
     r.geraReceita()
 
     println(r.instrucoes)
-}
-
+},
