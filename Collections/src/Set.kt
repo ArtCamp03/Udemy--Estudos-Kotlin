@@ -9,8 +9,8 @@ fun main() {
 
     println(set1)
 
-    set1.add("Sao Paulo")
-    set1.remove("Luis")
+    //set1.add("Sao Paulo")
+    //set1.remove("Luis")
     println(set1.contains("Sao Paulo"))
 
     println(set1)
