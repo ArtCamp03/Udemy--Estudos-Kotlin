@@ -1,4 +1,5 @@
 // Lista, set e map
+// Lista e um conjunto ordenado
 
 fun main(){
     // listOf utiliza varag
@@ -22,6 +23,6 @@ fun main(){
 
     println(list2.contains(2))
     list4.clear()
-    
+
     println(list4)
 }
