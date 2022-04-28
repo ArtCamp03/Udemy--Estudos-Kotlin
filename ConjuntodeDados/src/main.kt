@@ -25,6 +25,14 @@ fun main() {
     // sumOf soma uma propriedade especifica
 
     println(data.sumOf { it.calorias })
+
+    // filter
+    data.filter { it.nome == "Lasanha" }
+
+    println(
+        data.any { it.calorias > 500 }
+    )
+
 }
 
 fun geraDados(): List<Receita> {
