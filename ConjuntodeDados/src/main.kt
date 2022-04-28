@@ -9,6 +9,22 @@ fun main() {
 
     println("Tenho dados? ${if(data.any()) "sim" else "nao"} ")
     println("Tenho elementos ${data.count()} elementos.")
+
+    // objeto da primeira receita
+    println("Primeira Receita: ${data.first().nome}")
+
+    // objeto da ultima receita
+    println("Ultima Receita: ${data.last().nome}")
+
+    println(listOf<Int>().firstOrNull())
+    println(listOf<Int>().lastOrNull())
+
+    // sum -> soma apenas numeros
+    println(listOf<Int>().sum())
+
+    // sumOf soma uma propriedade especifica
+
+    println(data.sumOf { it.calorias })
 }
 
 fun geraDados(): List<Receita> {
