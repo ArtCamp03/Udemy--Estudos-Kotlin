@@ -33,6 +33,34 @@ fun main() {
         data.any { it.calorias > 500 }
     )
 
+    // Take(pega primerios) e Takelast(pega ultimos)
+    println(data.take(2))
+    println(data.takeLast(2))
+
+    // forEach
+    data.forEach { println(it.nome)}
+
+    println("calorias maiores que 500")
+    data.filter {it.calorias > 500}.forEach {println(it.nome)}
+
+    // MAX e MIN -> retorna somente o numero
+    print("Mais calorias:")
+    println(data.maxOf { it.calorias })
+
+    print("Menos calorias:")
+    println(data.minOf { it.calorias })
+
+    listOf(1, 2,4).maxOf { it }
+    listOf(1, 2,4).maxOfOrNull { it }
+
+    listOf(1, 2,4, 9, 0).minOf { it }
+    listOf(1, 2,4,7 ).minOfOrNull { it }
+
+    // maxBy retorna o objeto
+    println(data.maxByOrNull { it.calorias })
+
+    // map cria outra lista com os elementos modificados
+    println(data.map {it.calorias}.sum())
 }
 
 fun geraDados(): List<Receita> {
