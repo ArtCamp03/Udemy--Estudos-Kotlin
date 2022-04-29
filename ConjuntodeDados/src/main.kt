@@ -61,6 +61,24 @@ fun main() {
 
     // map cria outra lista com os elementos modificados
     println(data.map {it.calorias}.sum())
+
+    // average
+    // media das calorias das receitas
+    listOf(12, 15, 18, 20).average()
+    data.app { it.calorias }.average()
+
+    // distinct, sorted, e reversed
+    val lst = listOf(1, 3, 5, 7, 35, 16, 19)
+    println(lst.distinct())
+
+    // elementos distintos
+    println(data.distinctBy { it.nome })  // se for somente (it) ele analisa o objeto todo
+
+    // sorted ordena para o maior
+    println(lst.sorted())
+    println(lst.sortedDescending())
+
+    println(lst.reversed())
 }
 
 fun geraDados(): List<Receita> {
