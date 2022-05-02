@@ -1,20 +1,41 @@
-class Console {
-    fun readInt(msg: String): Int{
+class Console private constructor(){
 
-        var retorno : Int? = null
-        do {
-            print(msg)
-            val info = readLine()
+    companion object {
+        fun readInt(msg: String): Int{
 
-            if(info != null && info != ""){
-                retorno = info.toIntOrNull()
+            var retorno : Int? = null
+            do {
+                print(msg)
+                val info = readLine()
 
-                if(retorno == null){
+                if(info != null && info != ""){
+                    retorno = info.toIntOrNull()
+
+                    if(retorno == null || retorno < 0){
+                        println("Valor Invalido")
+                    }
+                }else{
                     println("Valor Invalido")
                 }
-            }
-        } while (retorno == null)
+            } while (retorno == null || retorno <= 0)
 
-        return retorno
+            return retorno
+        }
+
+        fun readString(msg: String) : String{
+            var retorno : String? = null
+            do{
+                print(msg)
+                val info = readLine()
+                if(info != null && info != ""){
+                    retorno = info.lowercase()
+                }else{
+                    println("retorno invalido !!")
+                }
+            }while(retorno == null)
+            return retorno
+        }
     }
+
+
 }

@@ -1,15 +1,20 @@
 class Portaria {
 
-    private val console = Console()
-
     fun controle(){
-        val idade = console.readInt("Qual sua idade? ")
-        println(idade)
+        val idade = Console.readInt("Qual sua idade? ")
+        if(idade < 18){
+            println("Negado. Menores de idade não são permitidos.")
+            return
+        }
+
+        val tipoConvite = Console.readString("Qual é o tipo de convite? ")
+        println(tipoConvite)
     }
 
 }
 
 fun portaria() {
+    /*
     println("Qual sua idade? ")
     val idade = readLine()
     if (idade != null && idade != "") {
@@ -18,6 +23,8 @@ fun portaria() {
             return
         }
     }
+    */
+
     print("Qual é o tipo de convite? ")
     var tipoConvite = readLine()
     if (tipoConvite != null && tipoConvite != "") {
