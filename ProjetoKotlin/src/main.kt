@@ -1,3 +1,5 @@
+import controller.Portaria
+
 fun main() {
-    Portaria().controle()
+    Portaria()
 }

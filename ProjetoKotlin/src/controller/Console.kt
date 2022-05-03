@@ -1,3 +1,5 @@
+package controller
+
 class Console private constructor(){
 
     companion object {
