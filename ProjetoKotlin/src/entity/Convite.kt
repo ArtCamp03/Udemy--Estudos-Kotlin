@@ -1,3 +1,3 @@
 package entity
 
-class Convite (val tipo:String, val codigo:String)
+class Convite (var tipo:String = "", var codigo:String = "", val idade: Int)
