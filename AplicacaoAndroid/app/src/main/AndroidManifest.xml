@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AplicationTest">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".ScrollDiversos"
+            android:exported="false" />
+        <activity
+            android:name=".LayoutHorizontal"
+            android:exported="true" />
+        <activity
+            android:name=".ScrollVertical"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
