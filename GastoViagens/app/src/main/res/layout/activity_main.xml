@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <EditText
+        android:id="@+id/edit_distance"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_margin="12dp"
@@ -22,6 +23,7 @@
         android:text="@string/total_de_quilometros" />
 
     <EditText
+        android:id="@+id/edit_preco"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_margin="12dp"
@@ -35,6 +37,7 @@
         android:text="@string/pec_litro" />
 
     <EditText
+        android:id="@+id/edit_autonomia"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_margin="12dp"
@@ -54,22 +57,24 @@
         android:gravity="center"
         android:text="@string/seu_gasto_total_sera_de"
         android:textAllCaps="true"
-        android:textSize="24dp" />
+        android:textSize="24sp" />
 
     <TextView
+        android:id="@+id/tex_total_value"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_margin="12dp"
         android:gravity="center"
         android:text="@string/valor"
         android:textColor="@color/black"
-        android:textSize="38dp" />
+        android:textSize="38sp" />
 
-    <EditText
+    <Button
+        android:id="@+id/btn_calc"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_margin="12dp"
-        android:background="#32CD32"
+        android:backgroundTint="#32CD32"
         android:gravity="center"
         android:text="@string/calcular" />
 
