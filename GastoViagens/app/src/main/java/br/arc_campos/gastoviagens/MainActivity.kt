@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     // ActivityMainBinding -> classe responsavel por mapear os elementos
     // inflate -> expande o layout
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,26 +46,36 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
-        if(view.id == R.id.btn_calc){
+        if (view.id == R.id.btn_calc) {
             calculate()
         }
 
     }
 
-    private fun calculate(){
+    private fun isValid(): Boolean {
+        return (binding.editDistance.text.toString() != ""
+                && binding.editPreco.text.toString() != ""
+                && binding.editAutonomia.text.toString() != ""
+                && binding.editAutonomia.text.toString().toFloat() != 0f)
+    }
 
-        val distance = binding.editDistance.text.toString().toFloat()
-        val price = binding.editPreco.text.toString().toFloat()
-        val autonomy = binding.editAutonomia.text.toString().toFloat()
+    private fun calculate() {
 
-        val totalValue = (distance * price) / autonomy
+        if (isValid()) {
+            val distance = binding.editDistance.text.toString().toFloat()
+            val price = binding.editPreco.text.toString().toFloat()
+            val autonomy = binding.editAutonomia.text.toString().toFloat()
+            val totalValue = (distance * price) / autonomy
+            val totalValueStr = "R$ ${"%.2f".format(totalValue)}"
 
-        val totalValueStr = "R$ ${"%.2f".format(totalValue)}"
-
-        binding.texTotalValue.text = totalValueStr
+            binding.texTotalValue.text = totalValueStr
+        }else{
+            Toast.makeText(this, R.string.validation_field_all_fields, Toast.LENGTH_SHORT).show()
+        }
 
         // tost notification
         // Toast.makeText(this, totalValueStr, Toast.LENGTH_SHORT).show()
+
     }
 
 }
