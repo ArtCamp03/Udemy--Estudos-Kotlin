@@ -1,0 +1,30 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id btn_calc
+id edit_autonomia
+id edit_distance
+id edit_preco
+id tex_total_value
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string autonomia
+string calcular
+string distancia
+string kms_por_litro
+string pec_litro
+string pre_o
+string seu_gasto_total_sera_de
+string total_de_quilometros
+string valor
+style Theme.GastoViagens
