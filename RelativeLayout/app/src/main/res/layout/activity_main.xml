@@ -4,36 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tex_a"
-        android:layout_width="50dp"
+    <EditText
+        android:id="@+id/edit_distance"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="28sp"
-        android:text="A"
-        android:gravity="center"
-       />
-
-    <TextView
-        android:id="@+id/text_b"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/tex_a"
-        android:textSize="28sp"
-        android:text="B"
-        android:gravity="center"
         />
 
     <TextView
-        android:id="@+id/text_c"
-        android:layout_width="50dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text_distance"
+        android:layout_below="@id/edit_distance"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/text_b"
-        android:textSize="28sp"
-        android:text="C"
-        android:gravity="center"
+        android:text="Total de kms"
         />
 
+    <EditText
+        android:id="@+id/edit_price"
+        android:layout_below="@id/text_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text_price"
+        android:layout_below="@id/edit_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preço por Litro"
+        />
 
 </RelativeLayout>
