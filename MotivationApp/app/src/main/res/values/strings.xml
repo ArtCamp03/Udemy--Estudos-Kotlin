@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Motivation App</string>
+    <string name="saudacao">ola kotlin</string>
+    <string name="nova_frase">Motivation in user</string>
+    <string name="modifica_frase">nova frase</string>
 </resources>
