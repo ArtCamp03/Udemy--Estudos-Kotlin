@@ -4,36 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#08AD7F"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tex_a"
-        android:layout_width="50dp"
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/white"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_margin="24dp"
+        android:padding="8dp"
+        android:layout_below="@id/edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Senha"
+        android:inputType="numberPassword"
+        android:background="@color/white"
+        />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="28sp"
-        android:text="A"
-        android:gravity="center"
-       />
+        android:layout_below="@id/edit_password"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#DADADA"
+        android:text="Login"
+        android:textAllCaps="true"
+        android:textColor="#08AD7F" />
 
     <TextView
-        android:id="@+id/text_b"
-        android:layout_width="50dp"
+        android:layout_marginTop="11dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/tex_a"
-        android:textSize="28sp"
-        android:text="B"
-        android:gravity="center"
+        android:layout_below="@id/button_login"
+        android:text="Nao e cadastrado ? Cadastra-se"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        />
+
+    <ImageView
+        android:id="@+id/image_support"
+        android:src="@drawable/ic_support"
+        android:tint="@color/black"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
         />
 
     <TextView
-        android:id="@+id/text_c"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@id/text_b"
-        android:textSize="28sp"
-        android:text="C"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Esqueceu sua senha?"
+        android:layout_toEndOf="@id/image_support"
         android:gravity="center"
+        android:layout_alignParentBottom="true"
         />
-
 
 </RelativeLayout>
