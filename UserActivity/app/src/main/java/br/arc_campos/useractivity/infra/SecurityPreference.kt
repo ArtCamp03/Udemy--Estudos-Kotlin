@@ -1,4 +1,4 @@
-package br.arc_campos.useractivity
+package br.arc_campos.useractivity.infra
 
 import android.content.Context
 import android.content.SharedPreferences
