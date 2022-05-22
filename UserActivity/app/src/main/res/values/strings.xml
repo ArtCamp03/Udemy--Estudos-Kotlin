@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">User Activity</string>
+    <string name="validation_mandatory_name">Qual e o seu nome ? Activity</string>
+    <string name="saudacao">Seja bem vindo</string>
+    <string name="nova_frase">Qual e o seu nome ?</string>
+    <string name="notification">Digite seu nome novamente</string>
 </resources>

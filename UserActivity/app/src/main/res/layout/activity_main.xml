@@ -19,6 +19,7 @@
        />
 
     <EditText
+        android:id="@+id/edit_name"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,14 +31,17 @@
         />
 
     <Button
-        android:layout_alignParentBottom="true"
+        android:id="@+id/button_save"
         android:layout_width="234dp"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp"
-        android:textSize="28sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="18dp"
         android:text="salvar"
         android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        />
+        android:textSize="28sp" />
 
 </RelativeLayout>
