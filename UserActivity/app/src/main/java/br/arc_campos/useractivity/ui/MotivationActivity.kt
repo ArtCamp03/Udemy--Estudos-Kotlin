@@ -10,6 +10,7 @@ import br.arc_campos.useractivity.R
 import br.arc_campos.useractivity.data.Mock
 import br.arc_campos.useractivity.infra.SecurityPreference
 import br.arc_campos.useractivity.databinding.ActivityMotivationBinding
+import java.util.*
 
 class MotivationActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -112,7 +113,8 @@ class MotivationActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun handleNextPhrase() {
-        binding.textPhase.text = Mock().getPhrase(categoryID)
+
+        binding.textPhase.text = Mock().getPhrase(categoryID, Locale.getDefault().language)
     }
 
 }

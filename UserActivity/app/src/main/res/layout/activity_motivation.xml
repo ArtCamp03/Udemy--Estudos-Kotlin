@@ -83,7 +83,7 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/purple_500"
         android:fontFamily="@font/cabin_sketch"
-        android:text="@string/notification"
+        android:text="@string/button_att"
         android:textAllCaps="true" />
 
 </RelativeLayout>

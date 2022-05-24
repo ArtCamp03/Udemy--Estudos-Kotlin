@@ -9,6 +9,12 @@ class MotivationConstance private constructor(){
         const val ALL = 1
         const val EMO = 2
         const val SUNNY = 3
-
     }
+
+    object LANGUAGE{
+        const val PORTUGUESE = "pt"
+        const val ENGLISH = "en"
+        const val FRENCH = "fr"
+    }
+
 }
