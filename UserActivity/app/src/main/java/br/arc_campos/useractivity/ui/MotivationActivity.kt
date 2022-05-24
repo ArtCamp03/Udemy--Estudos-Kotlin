@@ -33,6 +33,7 @@ class MotivationActivity : AppCompatActivity(), View.OnClickListener {
         binding.imageAll.setOnClickListener(this)
         binding.imageEmo.setOnClickListener(this)
         binding.imageSunny.setOnClickListener(this)
+        binding.textUserName.setOnClickListener(this)
 
     }
 
@@ -40,7 +41,10 @@ class MotivationActivity : AppCompatActivity(), View.OnClickListener {
         if (view != null) {
             if (view.id == R.id.button_new_phrase) {
                 handleNextPhrase()
-            } else if (view.id in listOf(R.id.image_all, R.id.image_emo, R.id.image_sunny)) {
+            } else if (view.id in listOf(
+                    R.id.image_all,
+                    R.id.image_emo,
+                    R.id.image_sunny)) {
                 handleFilter(view.id)
             }
         }
@@ -58,7 +62,6 @@ class MotivationActivity : AppCompatActivity(), View.OnClickListener {
         binding.imageAll.setColorFilter(ContextCompat.getColor(this, R.color.purple_200))
         binding.imageEmo.setColorFilter(ContextCompat.getColor(this, R.color.purple_200))
         binding.imageSunny.setColorFilter(ContextCompat.getColor(this, R.color.purple_200))
-
 
         when (id) {
             R.id.image_all -> {
