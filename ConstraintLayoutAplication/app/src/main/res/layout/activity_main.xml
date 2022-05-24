@@ -13,9 +13,8 @@
         android:layout_height="wrap_content"
         android:text="Button A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_b"
@@ -23,23 +22,32 @@
         android:layout_height="wrap_content"
         android:text="Button B"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_a"
         app:layout_constraintStart_toEndOf="@id/button_a"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_a" />
 
     <Button
         android:id="@+id/button_c"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button B"
-        app:layout_constraintVertical_bias="0.8"
-        app:layout_constraintHorizontal_bias="0.2"
+        android:text="Button C"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_b"
-        app:layout_constraintStart_toEndOf="@id/button_a"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/button_d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button D"
+        app:layout_constraintCircle="@id/button_c"
+        app:layout_constraintCircleAngle="45"
+        app:layout_constraintCircleRadius="125dp"
+        app:layout_constraintStart_toEndOf="@id/button_c"
+        app:layout_constraintTop_toTopOf="@id/button_c" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
