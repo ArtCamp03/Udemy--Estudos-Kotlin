@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.buttonSave.setOnClickListener(this)
         supportActionBar?.hide()
 
-        verifyUserName()
+        //verifyUserName()
     }
 
     override fun onClick(v: View?) {
@@ -40,12 +40,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             // salva nome
             SecurityPreference(this).storeString(MotivationConstance.KEY.USER_NAME, name)
 
-            startActivity(Intent(this, MotivationActivity::class.java))
+            //startActivity(Intent(this, MotivationActivity::class.java))
             finish()
         }else{
             Toast.makeText(this, R.string.validation_mandatory_name, Toast.LENGTH_SHORT).show()
         }
     }
+
+    /*
 
     private fun verifyUserName(){
         val name = SecurityPreference(this).getString(MotivationConstance.KEY.USER_NAME)
@@ -54,5 +56,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             finish()
         }
     }
+
+     */
+
 
 }

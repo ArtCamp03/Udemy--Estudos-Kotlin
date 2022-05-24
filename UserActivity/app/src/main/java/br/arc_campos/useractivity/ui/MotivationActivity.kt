@@ -1,5 +1,6 @@
 package br.arc_campos.useractivity.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,7 +25,6 @@ class MotivationActivity : AppCompatActivity(), View.OnClickListener {
         // esconde a barra de navegaçao
         supportActionBar?.hide()
 
-        handleUserName()
         handleFilter(R.id.image_all)
         handleNextPhrase()
 
@@ -37,18 +37,47 @@ class MotivationActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    override fun onClick(view: View?) {
-        if (view != null) {
-            if (view.id == R.id.button_new_phrase) {
-                handleNextPhrase()
-            } else if (view.id in listOf(
-                    R.id.image_all,
-                    R.id.image_emo,
-                    R.id.image_sunny)) {
-                handleFilter(view.id)
-            }
-        }
+    override fun onStart() {
+        super.onStart()
     }
+
+    override fun onResume() {
+        super.onResume()
+        handleUserName()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onClick(view: View) {
+        val id: Int = view.id
+
+        val listId = listOf(
+            R.id.image_all,
+            R.id.image_emo,
+            R.id.image_sunny
+        )
+
+        if (id in listId) {
+            handleFilter(id)
+        } else if (id == R.id.button_new_phrase) {
+            handleNextPhrase()
+        } else if (id == R.id.text_user_name) {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+    }
+
 
     private fun handleUserName() {
         val name = SecurityPreference(this).getString(MotivationConstance.KEY.USER_NAME)
@@ -82,7 +111,7 @@ class MotivationActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun handleNextPhrase(){
+    private fun handleNextPhrase() {
         binding.textPhase.text = Mock().getPhrase(categoryID)
     }
 
