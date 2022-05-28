@@ -84,14 +84,75 @@
         app:layout_constraintTop_toBottomOf="@id/text_time" />
 
     <TextView
-        android:layout_margin="16dp"
+        android:id="@+id/text_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_line"
-        android:text="O melhor cafe defumado da cidade"
+        android:layout_margin="16dp"
         android:gravity="center"
+        android:text="O melhor cafe defumado da cidade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+    <TextView
+        android:id="@+id/text_ingredient"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Ingredientes"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_description" />
+
+    <ImageView
+        android:id="@+id/image_ingredient_1"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_ingredient"
+        app:layout_constraintEnd_toStartOf="@id/text_ingredient_1"
+        android:tint="@color/black"
+        android:src="@drawable/ic_baseline_chevron_right_24"
+        />
+
+    <TextView
+        android:id="@+id/text_ingredient_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cappuccino de chocolate"
+        android:layout_margin="8dp"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        app:layout_constraintStart_toEndOf="@id/image_ingredient_1"
+        app:layout_constraintTop_toBottomOf="@id/text_ingredient"
+        />
+
+    <ImageView
+        android:id="@+id/image_ingredient_2"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_ingredient_1"
+        app:layout_constraintEnd_toStartOf="@id/text_ingredient_2"
+        android:tint="@color/black"
+        android:src="@drawable/ic_baseline_chevron_right_24"
+        />
+
+    <TextView
+        android:id="@+id/text_ingredient_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cappuccino de Balnilha"
+        android:layout_margin="8dp"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        app:layout_constraintStart_toEndOf="@id/image_ingredient_1"
+        app:layout_constraintTop_toBottomOf="@id/text_ingredient_1"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
