@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_all"
-        android:name="br.arc_campos.convidados.ui.home.AllGuestsFragment"
+        android:name="br.arc_campos.convidados.view.AllGuestsFragment"
         android:label="@string/menu_all_guests"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_presents"
-        android:name="br.arc_campos.convidados.ui.gallery.PresentFragment"
+        android:name="br.arc_campos.convidados.view.PresentFragment"
         android:label="@string/menu_presents"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_absents"
-        android:name="br.arc_campos.convidados.ui.slideshow.AbsentFragment"
+        android:name="br.arc_campos.convidados.view.AbsentFragment"
         android:label="@string/menu_absents"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
