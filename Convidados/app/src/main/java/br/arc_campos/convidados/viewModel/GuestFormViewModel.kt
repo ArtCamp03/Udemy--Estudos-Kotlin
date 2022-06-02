@@ -12,7 +12,7 @@ class GuestFormViewModel: ViewModel() {
     private var mSaveGuest = MutableLiveData<Boolean>()
     val saveGuest: LiveData<Boolean> = mSaveGuest
 
-    fun save(name: String, presence: String){
+    fun save(name: String, presence: Boolean){
         val guest = GuestModel(name, presence)
         mGuestRepository.save(guest)
     }
