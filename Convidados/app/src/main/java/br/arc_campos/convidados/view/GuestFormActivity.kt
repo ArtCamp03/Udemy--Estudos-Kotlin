@@ -8,23 +8,35 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.arc_campos.convidados.viewModel.GuestFormViewModel
 import br.arc_campos.convidados.R
+import br.arc_campos.convidados.databinding.ActivityGuestFormBinding
+import br.arc_campos.convidados.service.model.GuestModel
 import kotlinx.android.synthetic.main.activity_guest_form.*
 
 class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var mViewModel: GuestFormViewModel
+    private lateinit var binding: ActivityGuestFormBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_guest_form)
+
+        binding = ActivityGuestFormBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         mViewModel = ViewModelProvider(this).get(GuestFormViewModel::class.java)
 
-        setListeners()
-        observe()
+        binding.buttonSave.setOnClickListener(this)
+        binding.radioPresence.isChecked = true
 
     }
 
+    override fun onClick(v: View?) {
+        if(v.id == R.id.button_save){
+            //GuestModel(10,"x", false)
+        }
+    }
+
+    /*
     override fun onClick(v: View) {
         val id = v.id
         if(id == R.id.button_save){
@@ -49,5 +61,7 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
     private fun setListeners(){
         button_save.setOnClickListener(this)
     }
+
+     */
 
 }
