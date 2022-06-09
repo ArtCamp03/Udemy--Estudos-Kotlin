@@ -1,10 +1,13 @@
 package br.arc_campos.convidados.view
 
+import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.SyncStateContract.Helpers.insert
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.arc_campos.convidados.viewModel.GuestFormViewModel
 import br.arc_campos.convidados.R
@@ -31,8 +34,14 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        if(v.id == R.id.button_save){
-            //GuestModel(10,"x", false)
+        if(v?.id == R.id.button_save){
+            val name = binding.editNome.text.toString()
+            val presence = binding.radioPresence.isChecked
+
+            val model = GuestModel(0, name, presence)
+
+            mViewModel.insert(model)
+
         }
     }
 

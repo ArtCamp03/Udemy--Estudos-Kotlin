@@ -10,6 +10,11 @@ import br.arc_campos.convidados.service.repository.GuestRepository
 class GuestFormViewModel(application: Application): AndroidViewModel(application) {
 
     private val repository = GuestRepository.getInstance(application)
+
+    fun insert(guest: GuestModel){
+        repository.insert(guest)
+    }
+
     /*
     private val mGuestRepository: GuestRepository = GuestRepository()
     private var mSaveGuest = MutableLiveData<Boolean>()
