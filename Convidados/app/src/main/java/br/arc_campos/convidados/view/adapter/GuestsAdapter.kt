@@ -9,14 +9,21 @@ import br.arc_campos.convidados.view.viewholder.GuestViewHolder
 
 class GuestsAdapter: RecyclerView.Adapter<GuestViewHolder>() {
 
+    companion object{
+        var countCreate = 0
+        var countBind = 0
+    }
+
     private var guestList: List<GuestModel> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GuestViewHolder{
+        countCreate++
         val item = RowGuestBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return GuestViewHolder(item)
     }
 
     override fun onBindViewHolder(holder: GuestViewHolder, position: Int) {
+        countBind++
         holder.bind(guestList[position])
     }
 

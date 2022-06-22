@@ -102,9 +102,10 @@ class GuestRepository private constructor(context: Context) {
                     val name =
                         cursor.getString(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.NAME))
                     val presence =
-                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.PRESENCE))
+                        (cursor.getInt(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.PRESENCE)) == 1)
 
-                    list.add(GuestModel(id, name, presence == 1)
+                    val guest = GuestModel(id, name, presence)
+                    list.add(guest)
                 }
             }
 
@@ -135,7 +136,8 @@ class GuestRepository private constructor(context: Context) {
             val args = arrayOf("1")
             */
 
-            val cursor = db.rawQuery("SELECT id, name, presence FROM Guest WHERE presence = 1", null)
+            val cursor =
+                db.rawQuery("SELECT id, name, presence FROM Guest WHERE presence = 1", null)
 
             /*
             // outra maneira
@@ -154,9 +156,10 @@ class GuestRepository private constructor(context: Context) {
                     val name =
                         cursor.getString(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.NAME))
                     val presence =
-                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.PRESENCE))
+                        (cursor.getInt(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.PRESENCE)) == 1)
 
-                    list.add(GuestModel(id, name, presence == 1)
+                    val guest = GuestModel(id, name, presence)
+                    list.add(guest)
                 }
             }
 
@@ -188,7 +191,8 @@ class GuestRepository private constructor(context: Context) {
             val args = arrayOf("1")
             */
 
-            val cursor = db.rawQuery("SELECT id, name, presence FROM Guest WHERE presence = 0", null)
+            val cursor =
+                db.rawQuery("SELECT id, name, presence FROM Guest WHERE presence = 0", null)
 
             /*
             // outra maneira
@@ -207,9 +211,10 @@ class GuestRepository private constructor(context: Context) {
                     val name =
                         cursor.getString(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.NAME))
                     val presence =
-                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.PRESENCE))
+                        (cursor.getInt(cursor.getColumnIndex(DataBaseConstants.GUEST.COLUMNS.PRESENCE)) == 1)
 
-                    list.add(GuestModel(id, name, presence == 1)
+                    val guest = GuestModel(id, name, presence)
+                    list.add(guest)
                 }
             }
 
