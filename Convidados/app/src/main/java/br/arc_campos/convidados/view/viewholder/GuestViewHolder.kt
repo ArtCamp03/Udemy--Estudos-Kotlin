@@ -1,7 +1,9 @@
 package br.arc_campos.convidados.view.viewholder
 
+import android.content.DialogInterface
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import br.arc_campos.convidados.R
 import br.arc_campos.convidados.databinding.RowGuestBinding
@@ -27,7 +29,19 @@ class GuestViewHolder(private val bind: RowGuestBinding, private val listener: O
         }
 
         bind.textName.setOnLongClickListener {
-            listener.onDelete(guest.id)
+            AlertDialog.Builder(itemView.context)
+                .setTitle("Remoçao de convidado")
+                .setMessage("Tem certeza que deseja remover?")
+                .setPositiveButton("Sim") { dialog, which ->
+                    listener.onDelete(guest.id)
+                }
+                .setNegativeButton("Nao", null)
+                .setNeutralButton("OK") { dialog, which ->
+                    val s = ""
+                }
+                .create()
+                .show()
+
             true
         }
 
