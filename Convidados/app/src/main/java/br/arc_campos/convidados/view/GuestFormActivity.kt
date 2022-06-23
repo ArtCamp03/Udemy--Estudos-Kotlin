@@ -3,6 +3,7 @@ package br.arc_campos.convidados.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -55,8 +56,6 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
             viewModel.save(model)
 
-            //TODO temp
-            finish()
         }
     }
 
@@ -69,6 +68,21 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
                 binding.radioAbsence.isChecked = true
             }
 
+        })
+
+        viewModel.saveGuest.observe(this, Observer {
+            if(it.success){
+                Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
+                /*
+                if(guestId == 0){
+                    Toast.makeText(applicationContext, "Inserçao com sucesso", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(applicationContext, "Atualizaçao com sucesso", Toast.LENGTH_SHORT).show()
+                }
+                 */
+
+                finish()
+            }
         })
     }
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.arc_campos.convidados.service.model.GuestModel
+import br.arc_campos.convidados.service.model.SuccessFailure
 import br.arc_campos.convidados.service.repository.GuestRepository
 
 class GuestFormViewModel(application: Application): AndroidViewModel(application) {
@@ -14,21 +15,42 @@ class GuestFormViewModel(application: Application): AndroidViewModel(application
     private val guestModel = MutableLiveData<GuestModel>>()
     val guest: LiveData<GuestModel> = guestModel
 
-    /*
-     fun insert(guest: GuestModel){
-        repository.insert(guest)
-    }
+    private val _saveGuest = MutableLiveData<SuccessFailure>>()
+    val saveGuest: LiveData<SuccessFailure> = _saveGuest
 
-    fun update(guest: GuestModel){
-        repository.insert(guest)
-    }
+    /*
+        fun insert(guest: GuestModel){
+            repository.insert(guest)
+        }
+
+        fun update(guest: GuestModel){
+            repository.insert(guest)
+        }
      */
 
     fun save(guest: GuestModel){
+        val successFailure = SuccessFailure(true, "")
+
         if(guest.id == 0){
-            repository.insert(guest)
+            successFailure.success = repository.insert(guest)
+            /*
+                if(repository.insert(guest)){
+                    _saveGuest.value = "Inserçao com sucesso"
+                }else{
+                    _saveGuest.value = "Falha"
+                }
+             */
+
         }else{
-            repository.update(guest)
+            successFailure.success = repository.update(guest)
+            /*
+                if(repository.update(guest)){
+                    _saveGuest.value = "Atualizaçao com sucesso"
+                }else{
+                    _saveGuest.value = "Falha"
+                }
+             */
+
         }
 
     }
@@ -38,14 +60,14 @@ class GuestFormViewModel(application: Application): AndroidViewModel(application
     }
 
     /*
-    private val mGuestRepository: GuestRepository = GuestRepository()
-    private var mSaveGuest = MutableLiveData<Boolean>()
-    val saveGuest: LiveData<Boolean> = mSaveGuest
+        private val mGuestRepository: GuestRepository = GuestRepository()
+        private var mSaveGuest = MutableLiveData<Boolean>()
+        val saveGuest: LiveData<Boolean> = mSaveGuest
 
-    fun save(name: String, presence: Boolean){
-        val guest = GuestModel(name, presence)
-        mGuestRepository.save(guest)
-    }
+        fun save(name: String, presence: Boolean){
+            val guest = GuestModel(name, presence)
+            mGuestRepository.save(guest)
+        }
 
      */
 }
