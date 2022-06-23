@@ -1,23 +1,18 @@
 package br.arc_campos.convidados.view
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.SyncStateContract.Helpers.insert
 import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.arc_campos.convidados.viewModel.GuestFormViewModel
 import br.arc_campos.convidados.R
+import br.arc_campos.convidados.constants.DataBaseConstants
 import br.arc_campos.convidados.databinding.ActivityGuestFormBinding
 import br.arc_campos.convidados.service.model.GuestModel
-import kotlinx.android.synthetic.main.activity_guest_form.*
 
 class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var mViewModel: GuestFormViewModel
+    private lateinit var viewModel: GuestFormViewModel
     private lateinit var binding: ActivityGuestFormBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,11 +21,15 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityGuestFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mViewModel = ViewModelProvider(this).get(GuestFormViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(GuestFormViewModel::class.java)
 
         binding.buttonSave.setOnClickListener(this)
         binding.radioPresence.isChecked = true
 
+        loadData()
+
+        // tratar o recebimento do convidado
+       //viewModel.guest.observe()
     }
 
     override fun onClick(v: View?) {
@@ -40,8 +39,16 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
             val model = GuestModel(0, name, presence)
 
-            mViewModel.insert(model)
+            viewModel.insert(model)
 
+        }
+    }
+
+    private fun loadData(){
+        val bundle = intent.extras
+        if(bundle != null){
+            val guestid = bundle.getInt(DataBaseConstants.GUEST.ID)
+            viewModel.get(guestid)
         }
     }
 
