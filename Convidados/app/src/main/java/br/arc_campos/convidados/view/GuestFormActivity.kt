@@ -3,6 +3,8 @@ package br.arc_campos.convidados.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.arc_campos.convidados.viewModel.GuestFormViewModel
 import br.arc_campos.convidados.R
@@ -15,6 +17,8 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewModel: GuestFormViewModel
     private lateinit var binding: ActivityGuestFormBinding
 
+    private var guestId = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -25,6 +29,8 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonSave.setOnClickListener(this)
         binding.radioPresence.isChecked = true
+
+        obeserve()
 
         loadData()
 
@@ -37,17 +43,39 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
             val name = binding.editNome.text.toString()
             val presence = binding.radioPresence.isChecked
 
-            val model = GuestModel(0, name, presence)
+            val model = GuestModel(guestId, name, presence)
 
-            viewModel.insert(model)
+            /*
+             if(guestId == 0){
+                viewModel.insert(model)
+            }else{
+                viewModel.update(model)
+            }
+             */
 
+            viewModel.save(model)
+
+            //TODO temp
+            finish()
         }
+    }
+
+    private fun obeserve(){
+        viewModel.guest.observe(this, Observer {
+            binding.editNome.setText(it.name)
+            if(it.presence) {
+                binding.radioPresence.isChecked = true
+            }else{
+                binding.radioAbsence.isChecked = true
+            }
+
+        })
     }
 
     private fun loadData(){
         val bundle = intent.extras
         if(bundle != null){
-            val guestid = bundle.getInt(DataBaseConstants.GUEST.ID)
+            guestId = bundle.getInt(DataBaseConstants.GUEST.ID)
             viewModel.get(guestid)
         }
     }
