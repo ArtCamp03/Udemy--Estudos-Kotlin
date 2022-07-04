@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4335359f-ea1b-41ec-8b80-b369ca9a212f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Lambda/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lambda/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lambda/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lambda/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lambda/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lambda/Lambda.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LambdaAnonima/LambdaAnonima.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ModificadorConst.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Login/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Login/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
