@@ -5,20 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.arc_campos.convidados.constants.DataBaseConstants
 import br.arc_campos.convidados.databinding.FragmentAbsentBinding
-import br.arc_campos.convidados.databinding.FragmentSlideshowBinding
 import br.arc_campos.convidados.view.adapter.GuestsAdapter
 import br.arc_campos.convidados.view.listener.OnGuestListener
 import br.arc_campos.convidados.viewModel.GuestsViewModel
 
 class AbsentFragment : Fragment() {
 
-    private var _binding: FragmentSlideshowBinding? = null
+    private var _binding: FragmentAbsentBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: GuestsViewModel

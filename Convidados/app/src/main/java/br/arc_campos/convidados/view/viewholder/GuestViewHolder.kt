@@ -1,11 +1,7 @@
 package br.arc_campos.convidados.view.viewholder
 
-import android.content.DialogInterface
-import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import br.arc_campos.convidados.R
 import br.arc_campos.convidados.databinding.RowGuestBinding
 import br.arc_campos.convidados.service.model.GuestModel
 import br.arc_campos.convidados.view.listener.OnGuestListener

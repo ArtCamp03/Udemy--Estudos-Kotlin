@@ -1,15 +1,11 @@
 package br.arc_campos.convidados.service.repository
 
 import android.content.Context
-import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import br.arc_campos.convidados.constants.DataBaseConstants
-import br.arc_campos.convidados.constants.DataBaseConstants.GUEST.TABLE_NAME
 import br.arc_campos.convidados.service.model.GuestModel
 
 // classe dataBaseHelper é a utilizada no repositorio para acessar o banco
@@ -46,6 +42,8 @@ override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 abstract class GuestDataBaseHelper : RoomDatabase() {
 
     //thread
+
+    abstract fun guestDAO() : GuestDAO
 
     companion object {
         private lateinit var INSTANCE: GuestDataBaseHelper

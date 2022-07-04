@@ -10,15 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.arc_campos.convidados.constants.DataBaseConstants
 import br.arc_campos.convidados.databinding.FragmentAllGuestsBinding
-import br.arc_campos.convidados.databinding.FragmentHomeBinding
 import br.arc_campos.convidados.view.adapter.GuestsAdapter
 import br.arc_campos.convidados.view.listener.OnGuestListener
 import br.arc_campos.convidados.viewModel.GuestsViewModel
-import kotlinx.android.synthetic.main.nav_header_main.*
 
 class AllGuestsFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentAllGuestsBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: GuestsViewModel

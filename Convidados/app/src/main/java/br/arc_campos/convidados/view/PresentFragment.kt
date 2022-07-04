@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.arc_campos.convidados.constants.DataBaseConstants
-import br.arc_campos.convidados.databinding.FragmentGalleryBinding
 import br.arc_campos.convidados.databinding.FragmentPresentBinding
 import br.arc_campos.convidados.view.adapter.GuestsAdapter
 import br.arc_campos.convidados.view.listener.OnGuestListener
@@ -17,7 +16,7 @@ import br.arc_campos.convidados.viewModel.GuestsViewModel
 
 class PresentFragment : Fragment() {
 
-    private var _binding: FragmentGalleryBinding? = null
+    private var _binding: FragmentPresentBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: GuestsViewModel

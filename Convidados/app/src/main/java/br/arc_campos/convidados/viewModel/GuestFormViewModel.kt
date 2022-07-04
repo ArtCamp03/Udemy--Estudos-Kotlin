@@ -10,12 +10,12 @@ import br.arc_campos.convidados.service.repository.GuestRepository
 
 class GuestFormViewModel(application: Application): AndroidViewModel(application) {
 
-    private val repository = GuestRepository.getInstance(application)
+    private val repository : GuestRepository = GuestRepository(application.applicationContext)
 
-    private val guestModel = MutableLiveData<GuestModel>>()
+    private var guestModel = MutableLiveData<GuestModel>()
     val guest: LiveData<GuestModel> = guestModel
 
-    private val _saveGuest = MutableLiveData<SuccessFailure>>()
+    private var _saveGuest = MutableLiveData<SuccessFailure>()
     val saveGuest: LiveData<SuccessFailure> = _saveGuest
 
     /*
@@ -56,7 +56,7 @@ class GuestFormViewModel(application: Application): AndroidViewModel(application
     }
 
     fun get(id: Int){
-        guestModel.value = repository.get()
+        guestModel.value = repository.get(id)
     }
 
     /*

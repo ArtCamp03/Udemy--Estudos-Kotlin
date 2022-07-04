@@ -1,17 +1,16 @@
 package br.arc_campos.convidados.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import br.arc_campos.convidados.viewModel.GuestFormViewModel
 import br.arc_campos.convidados.R
 import br.arc_campos.convidados.constants.DataBaseConstants
 import br.arc_campos.convidados.databinding.ActivityGuestFormBinding
 import br.arc_campos.convidados.service.model.GuestModel
+import br.arc_campos.convidados.viewModel.GuestFormViewModel
 
 class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -44,7 +43,11 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
             val name = binding.editNome.text.toString()
             val presence = binding.radioPresence.isChecked
 
-            val model = GuestModel(guestId, name, presence)
+            val model = GuestModel().apply {
+                this.id = guestId
+                this.name = name
+                this.presence = presence
+            }
 
             /*
              if(guestId == 0){
@@ -90,7 +93,7 @@ class GuestFormActivity : AppCompatActivity(), View.OnClickListener {
         val bundle = intent.extras
         if(bundle != null){
             guestId = bundle.getInt(DataBaseConstants.GUEST.ID)
-            viewModel.get(guestid)
+            viewModel.get(guestId)
         }
     }
 
