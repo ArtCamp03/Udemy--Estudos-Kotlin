@@ -14,7 +14,7 @@ class PersonModel {
     lateinit var token: String
 
     @SerializedName("perswwonKey")
-    lateinit var perswwonKey: String
+    lateinit var personKey: String
 
     @SerializedName("name")
     lateinit var name: String
