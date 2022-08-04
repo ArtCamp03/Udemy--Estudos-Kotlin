@@ -9,10 +9,10 @@ interface TaskService {
     @GET("Task")
     fun list(): Call<List<TaskModel>>
 
-    @GET("Nest7Days")
+    @GET("Task/Nest7Days")
     fun listNext(): Call<List<TaskModel>>
 
-    @GET("Overdue")
+    @GET("Task/Overdue")
     fun listOverdue(): Call<List<TaskModel>>
 
     @GET("Task/{id}")
