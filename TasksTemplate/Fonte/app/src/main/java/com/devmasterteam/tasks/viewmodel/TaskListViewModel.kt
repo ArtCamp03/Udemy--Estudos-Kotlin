@@ -9,11 +9,13 @@ import com.devmasterteam.tasks.service.listener.APIListener
 import com.devmasterteam.tasks.service.model.PriorityModel
 import com.devmasterteam.tasks.service.model.TaskModel
 import com.devmasterteam.tasks.service.model.ValidationModel
+import com.devmasterteam.tasks.service.repository.PriorityRepository
 import com.devmasterteam.tasks.service.repository.TaskRepository
 
 class TaskListViewModel(application: Application) : AndroidViewModel(application) {
 
     private val taskRepository = TaskRepository(application.applicationContext)
+    private val priorityRepository = PriorityRepository(application.applicationContext)
 
     private val _tasks = MutableLiveData<List<TaskModel>>()
     val tasks : LiveData<List<TaskModel>> = _tasks
@@ -21,6 +23,10 @@ class TaskListViewModel(application: Application) : AndroidViewModel(application
     fun list(){
         taskRepository.list(object : APIListener<List<TaskModel>> {
             override fun onSuccess(result: List<PriorityModel>) {
+                result.forEach{
+                    it.description = priorityRepository.getDescription(it.id)
+                }
+
                 _tasks.value = result
             }
 
