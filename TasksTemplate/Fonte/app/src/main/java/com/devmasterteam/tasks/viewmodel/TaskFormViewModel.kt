@@ -22,8 +22,15 @@ class TaskFormViewModel(application: Application) : AndroidViewModel(application
     private val _taskSave = MutableLiveData<ValidationModel>()
     val taskSave : LiveData<ValidationModel> = _taskSave
 
+    private val _task = MutableLiveData<TaskModel>()
+    val task : LiveData<TaskModel> = _task
+
+    private val _taskLoad = MutableLiveData<ValidationModel>()
+    val taskLoad : LiveData<ValidationModel> = _taskLoad
+
     fun save(task: TaskModel){
-        taskRepository.create(task, object : APIListener<Boolean>{
+
+        val listener = object : APIListener<Boolean>{
             override fun onSuccess(result: List<PriorityModel>) {
                 _taskSave.value = ValidationModel()
             }
@@ -32,6 +39,25 @@ class TaskFormViewModel(application: Application) : AndroidViewModel(application
                 _taskSave.value = ValidationModel(message)
             }
 
+        }
+
+        if(task.id == 0){
+            taskRepository.create(task,listener)
+        }else{
+            taskRepository.update(task, listener)
+        }
+
+    }
+
+    fun load(id: Int){
+        TaskRepository.load(id, object : APIListener<TaskModel> {
+            override fun onSuccess(result: List<PriorityModel>) {
+                _task.value = result
+            }
+
+            override fun onFailure(message: String) {
+                _taskLoad.value = ValidationModel(message)
+            }
         })
     }
 
