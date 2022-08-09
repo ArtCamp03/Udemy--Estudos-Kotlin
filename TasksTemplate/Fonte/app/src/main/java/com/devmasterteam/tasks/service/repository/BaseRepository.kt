@@ -48,7 +48,7 @@ open class BaseRepository(val context: Context) {
                else -> false
            }
        }else{
-           if(cm.activeNetworkInfo 1= null) {
+           if(cm.activeNetworkInfo != null) {
                result = when (cm.activeNetworkInfo!!.type) {
                    ConnectivityManager.TYPE_WIFI -> true
                    ConnectivityManager.TYPE_MOBILE -> true
