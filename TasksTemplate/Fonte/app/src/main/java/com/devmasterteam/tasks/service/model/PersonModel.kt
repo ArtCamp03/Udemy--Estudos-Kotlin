@@ -13,7 +13,7 @@ class PersonModel {
     @SerializedName("token")
     lateinit var token: String
 
-    @SerializedName("perswwonKey")
+    @SerializedName("personKey")
     lateinit var personKey: String
 
     @SerializedName("name")

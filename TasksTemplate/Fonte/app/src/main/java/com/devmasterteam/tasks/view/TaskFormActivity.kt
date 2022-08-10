@@ -28,8 +28,6 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         // Variáveis da classe
         viewModel = ViewModelProvider(this).get(TaskFormViewModel::class.java)
         binding = ActivityTaskFormBinding.inflate(layoutInflater)
@@ -42,41 +40,41 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
 
         loadDataFromActivity()
 
-        observer()
+        observe()
 
         // Layout
         setContentView(binding.root)
     }
 
+
     override fun onClick(v: View) {
-        if(v.id == R.id.button_date){
+        if (v.id == R.id.button_date) {
             handleDate()
-        }else if(v.id == R.id.button_save){
+        } else if (v.id == R.id.button_save) {
             handleSave()
         }
     }
 
-    override fun onDateSet(v: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+    override fun onDateSet(v: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
         val calendar = Calendar.getInstance()
         calendar.set(year, month, dayOfMonth)
 
-        val duoDate = dateFormat.format(calendar.time)
-        binding.buttonDate.text = duoDate
+        val dueDate = dateFormat.format(calendar.time)
+        binding.buttonDate.text = dueDate
     }
 
     private fun loadDataFromActivity() {
         val bundle = intent.extras
-        if(bundle !=  null){
+        if (bundle != null) {
             taskIdentification = bundle.getInt(TaskConstants.BUNDLE.TASKID)
             viewModel.load(taskIdentification)
         }
-
     }
 
-    private fun getIndex(priorityId: Int): Int{
+    private fun getIndex(priorityId: Int): Int {
         var index = 0
-        for(l in listPriority){
-            if(l.id == priorityId){
+        for (l in listPriority) {
+            if (l.id == priorityId) {
                 break
             }
             index++
@@ -84,11 +82,11 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
         return index
     }
 
-    private fun observer(){
+    private fun observe() {
         viewModel.priorityList.observe(this) {
             listPriority = it
             val list = mutableListOf<String>()
-            for(p in it){
+            for (p in it) {
                 list.add(p.description)
             }
             val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
@@ -108,7 +106,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
             }
         }
 
-        viewModel.task.observe(this){
+        viewModel.task.observe(this) {
             binding.editDescription.setText(it.description)
             binding.checkComplete.isChecked = it.complete
             binding.spinnerPriority.setSelection(getIndex(it.priorityId))
@@ -123,18 +121,16 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
                 finish()
             }
         }
-
     }
 
-    private fun toast(str: String){
+    private fun toast(str: String) {
         Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
     }
 
-    private fun handleSave(){
-        val task =  TaskModel().apply {
+    private fun handleSave() {
+        val task = TaskModel().apply {
             this.id = taskIdentification
             this.description = binding.editDescription.text.toString()
-
             this.complete = binding.checkComplete.isChecked
             this.dueDate = binding.buttonDate.text.toString()
 
@@ -145,7 +141,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
         viewModel.save(task)
     }
 
-    private fun handleDate(){
+    private fun handleDate() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
