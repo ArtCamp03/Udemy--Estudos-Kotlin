@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.devmasterteam.tasks.service.constants.TaskConstants
 import com.devmasterteam.tasks.service.listener.APIListener
-import com.devmasterteam.tasks.service.model.PriorityModel
 import com.devmasterteam.tasks.service.model.TaskModel
 import com.devmasterteam.tasks.service.model.ValidationModel
 import com.devmasterteam.tasks.service.repository.PriorityRepository
@@ -28,19 +27,16 @@ class TaskListViewModel(application: Application) : AndroidViewModel(application
     private val _status = MutableLiveData<ValidationModel>()
     val status : LiveData<ValidationModel> = _status
 
-    fun list(filter: Int){
+    fun list(filter: Int) {
         taskFilter = filter
         val listener = object : APIListener<List<TaskModel>> {
-            override fun onSuccess(result: List<PriorityModel>) {
-                result.forEach{
-                    it.description = priorityRepository.getDescription(it.id)
+            override fun onSuccess(result: List<TaskModel>) {
+                result.forEach {
+                    it.priorityDescription = priorityRepository.getDescription(it.priorityId)
                 }
-
                 _tasks.value = result
             }
-
             override fun onFailure(message: String) {}
-
         }
 
         when (filter) {
@@ -51,7 +47,7 @@ class TaskListViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun delete(id: Int) {
-        TaskRepository.delete(id, object : APIListener<Boolean> {
+        taskRepository.delete(id, object : APIListener<Boolean> {
             override fun onSuccess(result: Boolean) {
                 list(taskFilter)
             }

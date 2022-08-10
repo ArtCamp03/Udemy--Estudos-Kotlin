@@ -4,7 +4,7 @@ import com.devmasterteam.tasks.service.model.PriorityModel
 
 interface APIListener<T> {
 
-    fun onSuccess(result: List<PriorityModel>)
+    fun onSuccess(result: T)
 
     fun onFailure(message : String)
 

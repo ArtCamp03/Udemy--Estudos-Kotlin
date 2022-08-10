@@ -49,7 +49,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
     }
 
     override fun onClick(v: View) {
-        if(E.id == R.id.button_date){
+        if(v.id == R.id.button_date){
             handleDate()
         }else if(v.id == R.id.button_save){
             handleSave()
@@ -95,16 +95,16 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
             binding.spinnerPriority.adapter = adapter
         }
 
-        viewModel.taskSave.observe(this){
-            if(it.status()){
-                if(taskIdentification == 0){
-                    Toast("Tarefa criada com sucesso!")
-                }else[
-                    Toast("Tarefa atualizada com sucesso")
-                ]
+        viewModel.taskSave.observe(this) {
+            if (it.status()) {
+                if (taskIdentification == 0) {
+                    toast(getString(R.string.task_created))
+                } else {
+                    toast(getString(R.string.task_updated))
+                }
                 finish()
-            }else{
-                Toast(it.message())
+            } else {
+                toast(it.message())
             }
         }
 
@@ -117,16 +117,16 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
             binding.buttonDate.text = SimpleDateFormat("dd/MM/yyyy").format(date)
         }
 
-        viewModel.taskLoad.observe(this){
-            if(!it.status()) {
-                Toast(it.message())
+        viewModel.taskLoad.observe(this) {
+            if (!it.status()) {
+                toast(it.message())
                 finish()
             }
         }
 
     }
 
-    private fun Toast(str: String){
+    private fun toast(str: String){
         Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
     }
 

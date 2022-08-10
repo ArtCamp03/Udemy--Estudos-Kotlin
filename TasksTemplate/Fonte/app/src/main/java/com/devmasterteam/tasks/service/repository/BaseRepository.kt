@@ -22,7 +22,7 @@ open class BaseRepository(val context: Context) {
         call.enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
                 if (response.code() == TaskConstants.HTTP.SUCCESS) {
-                    response.body()?.let { listener.onSuccess(-it) }
+                    response.body()?.let { listener.onSuccess(it) }
                 } else {
                     listener.onFailure(failResponse(response.errorBody()!!.string()))
                 }

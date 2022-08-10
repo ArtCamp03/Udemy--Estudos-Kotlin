@@ -51,7 +51,7 @@ class PriorityRepository(context: Context): BaseRepository(context) {
     }
 
     fun list(): List<PriorityModel> {
-        executeCall(remote.list(), listener = 0 )
+        return database.list()
     }
 
     fun save(list: List<PriorityModel>){

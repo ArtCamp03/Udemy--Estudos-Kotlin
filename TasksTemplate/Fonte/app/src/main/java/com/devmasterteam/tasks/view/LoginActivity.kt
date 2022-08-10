@@ -25,6 +25,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         // Layout
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         // Eventos
         binding.buttonLogin.setOnClickListener(this)
         binding.textRegister.setOnClickListener(this)

@@ -59,13 +59,22 @@ class TaskRepository(context: Context): BaseRepository(context) {
         executeCall(call, listener)
     }
 
-    fun load(id: Int, listener: APIListener<Boolean>) {
-        if(!isConnectionAvailable()){
+    fun load(id: Int, listener: APIListener<TaskModel>) {
+        if (!isConnectionAvailable()) {
             listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
             return
         }
 
         executeCall(remote.load(id), listener)
+    }
+
+    fun delete(id: Int, listener: APIListener<Boolean>) {
+        if (!isConnectionAvailable()) {
+            listener.onFailure(context.getString(R.string.ERROR_INTERNET_CONNECTION))
+            return
+        }
+
+        executeCall(remote.delete(id), listener)
     }
 
 

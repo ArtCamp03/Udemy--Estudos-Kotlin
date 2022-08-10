@@ -22,7 +22,7 @@ class AllTasksFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val adapter = TaskAdapter()
-    private val taskFilter = 0
+    private var taskFilter = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
         viewModel = ViewModelProvider(this).get(TaskListViewModel::class.java)

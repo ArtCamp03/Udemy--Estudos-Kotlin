@@ -31,7 +31,7 @@ class TaskFormViewModel(application: Application) : AndroidViewModel(application
     fun save(task: TaskModel){
 
         val listener = object : APIListener<Boolean>{
-            override fun onSuccess(result: List<PriorityModel>) {
+            override fun onSuccess(result: Boolean) {
                 _taskSave.value = ValidationModel()
             }
 
@@ -49,12 +49,11 @@ class TaskFormViewModel(application: Application) : AndroidViewModel(application
 
     }
 
-    fun load(id: Int){
-        TaskRepository.load(id, object : APIListener<TaskModel> {
-            override fun onSuccess(result: List<PriorityModel>) {
+    fun load(id: Int) {
+        taskRepository.load(id, object : APIListener<TaskModel> {
+            override fun onSuccess(result: TaskModel) {
                 _task.value = result
             }
-
             override fun onFailure(message: String) {
                 _taskLoad.value = ValidationModel(message)
             }
