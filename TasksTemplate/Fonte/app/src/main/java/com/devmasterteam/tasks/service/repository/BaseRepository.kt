@@ -19,44 +19,50 @@ open class BaseRepository(val context: Context) {
     }
 
     fun <T> executeCall(call: Call<T>, listener: APIListener<T>) {
-        call.enqueue(object : Callback<Boolean> {
-            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+        call.enqueue(object : Callback<T> {
+            override fun onResponse(call: Call<T>, response: Response<T>) {
                 if (response.code() == TaskConstants.HTTP.SUCCESS) {
-                    response.body()?.let { listener.onSuccess(it) }
+                    response.body()?.let { listener.onSuccess(-it) }
                 } else {
                     listener.onFailure(failResponse(response.errorBody()!!.string()))
                 }
             }
 
-            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+            override fun onFailure(call: Call<T>, t: Throwable) {
                 listener.onFailure(context.getString(R.string.ERROR_UNEXPECTED))
             }
-
         })
     }
+
+    /**
+     * Verifica se existe conexão com internet
+     */
 
     fun isConnectionAvailable(): Boolean {
         var result = false
 
+        // Gerenciador de conexão
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-       if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-           val activityNet = cm.activeNetwork ?: return false
-           val networkCapabilities = cm.getNetworkCapabilities(activityNet) ?: return false
-           result = when {
-               networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-               networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-               else -> false
-           }
-       }else{
-           if(cm.activeNetworkInfo != null) {
-               result = when (cm.activeNetworkInfo!!.type) {
-                   ConnectivityManager.TYPE_WIFI -> true
-                   ConnectivityManager.TYPE_MOBILE -> true
-                   ConnectivityManager.TYPE_ETHERNET -> true
-                   else -> false
-               }
-           }
-       }
+
+        // Verifica versão do sistema rodando a aplicação
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val activeNet = cm.activeNetwork ?: return false
+            val netWorkCapabilities = cm.getNetworkCapabilities(activeNet) ?: return false
+            result = when {
+                netWorkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                netWorkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        } else {
+            if (cm.activeNetworkInfo != null) {
+                result = when (cm.activeNetworkInfo!!.type) {
+                    ConnectivityManager.TYPE_WIFI -> true
+                    ConnectivityManager.TYPE_MOBILE -> true
+                    ConnectivityManager.TYPE_ETHERNET -> true
+                    else -> false
+                }
+            }
+        }
 
         return result
     }

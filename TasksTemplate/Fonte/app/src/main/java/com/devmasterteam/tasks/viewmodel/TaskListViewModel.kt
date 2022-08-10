@@ -22,10 +22,10 @@ class TaskListViewModel(application: Application) : AndroidViewModel(application
     private val _tasks = MutableLiveData<List<TaskModel>>()
     val tasks : LiveData<List<TaskModel>> = _tasks
 
-    private val _delete = MutableLiveData<ValidationModel>>()
+    private val _delete = MutableLiveData<ValidationModel>()
     val delete : LiveData<ValidationModel> = _delete
 
-    private val _status = MutableLiveData<ValidationModel>>()
+    private val _status = MutableLiveData<ValidationModel>()
     val status : LiveData<ValidationModel> = _status
 
     fun list(filter: Int){
