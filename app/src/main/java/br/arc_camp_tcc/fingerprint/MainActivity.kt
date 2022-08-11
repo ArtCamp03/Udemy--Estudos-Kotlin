@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 .build()
 
             bio.authenticate(info)
-            
+
         }
 
         supportActionBar?.hide()

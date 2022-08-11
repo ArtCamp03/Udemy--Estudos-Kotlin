@@ -44,6 +44,8 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener, DatePickerDi
 
         // Layout
         setContentView(binding.root)
+
+        supportActionBar?.hide()
     }
 
 
