@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
 import br.arc_camp_tcc.components.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -22,8 +23,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
 
         binding.buttonToast.setOnClickListener(this)
-
         binding.buttonSnake.setOnClickListener(this)
+
+        // button Spinner
+        binding.spinerStatic.onItemSelectedListener = this
+
+        binding.buttonGetSpinner.setOnClickListener(this)
+        binding.buttonSetSpinner.setOnClickListener(this)
 
         loadSpinner()
 
@@ -65,9 +71,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 snake.setBackgroundTint(Color.BLACK)
 
                 snake.show()
+            }else if (v.id == R.id.button_get_spinner){
+                val selectedItem = binding.spinerStatic.selectedItem
+                val selectedItemId = binding.spinerStatic.selectedItemId
+                val selectedItemPosition = binding.spinerStatic.selectedItemPosition
+
+                toast("Position: $selectedItemId : $selectedItem")
+            }else if (v.id == R.id.button_set_spinner){
+                binding.spinerStatic.setSelection(2)
             }
 
         }
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        if (parent != null) {
+            if(parent.id == R.id.spiner_static){
+                toast(parent?.getItemAtPosition(position).toString())
+            }
+        }
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        toast("Nothing")
     }
 
     private fun loadSpinner(){
@@ -79,6 +105,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun toast(str: String) {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
     }
-
 
 }
