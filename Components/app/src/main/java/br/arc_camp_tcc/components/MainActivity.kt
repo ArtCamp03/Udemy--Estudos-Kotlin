@@ -27,13 +27,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        if (v.id == R.id.button_toast ) {
-                val toast = Toast.makeText(this, "Botao Toast", Toast.LENGTH_SHORT)
+        if (v.id == R.id.button_toast) {
+            val toast = Toast.makeText(this, "Botao Toast", Toast.LENGTH_SHORT)
 
-                // encontra o nome do elemento
-                val textView = toast.view?.findViewById<TextView>(android.R.id.message)
-                if (textView != null) {
-                    textView.setTextColor(Color.RED)
+            // encontra o nome do elemento
+            val textView = toast.view?.findViewById<TextView>(android.R.id.message)
+            if (textView != null) {
+                textView.setTextColor(Color.RED)
 
                 // seta a gravidade do Toast
                 toast.setGravity(Gravity.TOP, 0, 250)
@@ -45,9 +45,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 toast.show()
 
                 //toast("Funcao -> TOAST")
-            }else if(v.id ==  R.id.button_snake ) {
+            } else if (v.id == R.id.button_snake) {
                 val linear = binding.linearRoot
                 val snake = Snackbar.make(linear, "Snake", Snackbar.LENGTH_SHORT)
+
+                // açao na SnackBar
+                snake.setAction("Desafazer", View.OnClickListener {
+                    toast("Desfeito !!")
+                })
+
+                // cor
+                snake.setActionTextColor(Color.GREEN)
+
+                // plano de fundo
+                snake.setBackgroundTint(Color.BLACK)
+
                 snake.show()
             }
 
