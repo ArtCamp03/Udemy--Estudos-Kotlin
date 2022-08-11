@@ -8,10 +8,11 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import br.arc_camp_tcc.components.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,31 +22,39 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonToast.setOnClickListener(this)
 
+        binding.buttonSnake.setOnClickListener(this)
 
     }
 
     override fun onClick(v: View) {
-        if(v.id == R.id.button_toast){
-            val toast = Toast.makeText(this, "Botao Toast",Toast.LENGTH_SHORT)
+        if (v.id == R.id.button_toast ) {
+                val toast = Toast.makeText(this, "Botao Toast", Toast.LENGTH_SHORT)
 
-            // encontra o nome do elemento
-            val textView = toast.view.findViewById<TextView>(android.R.id.message)
-            textView.setTextColor(Color.RES)
+                // encontra o nome do elemento
+                val textView = toast.view?.findViewById<TextView>(android.R.id.message)
+                if (textView != null) {
+                    textView.setTextColor(Color.RED)
 
-            // seta a gravidade do Toast
-            toast.setGravity(Gravity.TOP, 0, 250)
+                // seta a gravidade do Toast
+                toast.setGravity(Gravity.TOP, 0, 250)
 
-            // toast personalizada
-            val layout = layoutInflater.inflate(R.layout.toast_layout, null)
-            toast.view = layout
+                // toast personalizada
+                val layout = layoutInflater.inflate(R.layout.toast_layout, null)
+                toast.view = layout
 
-            toast.show()
+                toast.show()
 
-            //toast("Funcao -> TOAST")
+                //toast("Funcao -> TOAST")
+            }else if(v.id ==  R.id.button_snake ) {
+                val linear = binding.linearRoot
+                val snake = Snackbar.make(linear, "Snake", Snackbar.LENGTH_SHORT)
+                snake.show()
+            }
+
         }
     }
 
-    private fun toast(str: String){
-        Toast.makeText(this, str,Toast.LENGTH_SHORT).show()
+    private fun toast(str: String) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
     }
 }
