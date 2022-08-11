@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
 import br.arc_camp_tcc.components.databinding.ActivityMainBinding
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonSnake.setOnClickListener(this)
 
+        loadSpinner()
+
+        supportActionBar?.hide()
     }
 
     override fun onClick(v: View) {
@@ -66,7 +70,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun loadSpinner(){
+        val mList = listOf("Gramas", "Kg", "Arroba", "Tonelada")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mList)
+        binding.spinerDinamic.adapter = adapter
+    }
+
     private fun toast(str: String) {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
     }
+
+
 }
