@@ -39,6 +39,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         // switch
         binding.switchOnOff.setOnCheckedChangeListener(this)
 
+        // checkBox
+        binding.checkOnOff.setOnCheckedChangeListener(this)
+
         loadSpinner()
 
         supportActionBar?.hide()
@@ -129,8 +132,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
             }else {
                 toast("false")
             }
-
             //binding.switchOnOff.isChecked = true
+        }else if(buttonView.id == R.id.check_on_off){
+            if(isChecked) {
+                toast("true")
+            }else {
+                toast("false")
+            }
+            // binding.checkOnOff.isChecked = true
         }
     }
 
