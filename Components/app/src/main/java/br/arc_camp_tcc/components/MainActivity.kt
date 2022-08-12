@@ -5,14 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import br.arc_camp_tcc.components.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener
+, SeekBar.OnSeekBarChangeListener, CompoundButton.OnCheckedChangeListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -28,8 +26,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         // button Spinner
         binding.spinerStatic.onItemSelectedListener = this
 
+        //Spinner
         binding.buttonGetSpinner.setOnClickListener(this)
         binding.buttonSetSpinner.setOnClickListener(this)
+
+        //SeekBar
+        binding.seekbar.setOnSeekBarChangeListener(this)
+
+        binding.buttonGetSeekbar.setOnClickListener(this)
+        binding.buttonSetSeekbar.setOnClickListener(this)
+
+        // switch
+        binding.switchOnOff.setOnCheckedChangeListener(this)
 
         loadSpinner()
 
@@ -79,6 +87,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
                 toast("Position: $selectedItemId : $selectedItem")
             }else if (v.id == R.id.button_set_spinner){
                 binding.spinerStatic.setSelection(2)
+            }else if (v.id == R.id.button_get_seekbar){
+                toast("Seekbar: ${binding.seekbar}")
+            }else if (v.id == R.id.button_set_seekbar){
+                toast("altearado com sucesso")
             }
 
         }
@@ -94,6 +106,32 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         toast("Nothing")
+    }
+
+    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+        if(binding.seekbar.id == R.id.seekbar){
+            toast("Progress")
+        }
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+        toast("Track started")
+    }
+
+    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+        toast("Track stoped")
+    }
+
+    override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
+        if(buttonView.id == R.id.switch_on_off){
+            if(isChecked) {
+                toast("true")
+            }else {
+                toast("false")
+            }
+
+            //binding.switchOnOff.isChecked = true
+        }
     }
 
     private fun loadSpinner(){

@@ -65,4 +65,51 @@
 
     </LinearLayout>
 
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="50"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Valor seekBar: 0"
+        />
+
+    <!--Botoes obter e atribuir SeekBar-->
+    <LinearLayout
+        android:id="@+id/linear_button_seek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_get_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="obter seekbar"/>
+
+        <Button
+            android:id="@+id/button_set_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="atribuir seekbar"/>
+
+    </LinearLayout>
+
+    <Switch
+        android:layout_marginTop="16dp"
+        android:id="@+id/switch_on_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
 </LinearLayout>
