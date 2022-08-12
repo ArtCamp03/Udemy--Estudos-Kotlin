@@ -149,16 +149,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
             toast("false")
         }
     }
-}
 
-private fun loadSpinner() {
-    val mList = listOf("Gramas", "Kg", "Arroba", "Tonelada")
-    val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mList)
-    binding.spinerDinamic.adapter = adapter
-}
 
-private fun toast(str: String) {
-    Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
-}
+    private fun loadSpinner() {
+        val mList = listOf("Gramas", "Kg", "Arroba", "Tonelada")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mList)
+        binding.spinerDinamic.adapter = adapter
+    }
+
+    private fun toast(str: String) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+    }
 
 }
