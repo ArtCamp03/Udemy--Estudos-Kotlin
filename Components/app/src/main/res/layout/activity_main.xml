@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/linear_root"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp"
@@ -14,31 +14,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Toast Me"
-        />
+        android:text="Toast Me" />
 
     <Button
         android:id="@+id/button_snake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Snake Me"
-        />
+        android:text="Snake Me" />
 
     <Spinner
         android:id="@+id/spiner_static"
-        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        android:entries="@array/spiner_values"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="16dp"
+        android:entries="@array/spiner_values" />
 
     <Spinner
         android:id="@+id/spiner_dinamic"
-        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="16dp" />
 
     <!--Botoes obter e atribuir Spinner-->
     <LinearLayout
@@ -53,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="obter Spinner"/>
+            android:text="obter Spinner" />
 
         <Button
             android:id="@+id/button_set_spinner"
@@ -61,24 +57,22 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="atribuir Spinner"/>
+            android:text="atribuir Spinner" />
 
     </LinearLayout>
 
     <SeekBar
         android:id="@+id/seekbar"
-        android:layout_marginTop="32dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="50"
-        />
+        android:layout_marginTop="32dp"
+        android:max="50" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Valor seekBar: 0"
-        />
+        android:text="Valor seekBar: 0" />
 
     <!--Botoes obter e atribuir SeekBar-->
     <LinearLayout
@@ -93,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="obter seekbar"/>
+            android:text="obter seekbar" />
 
         <Button
             android:id="@+id/button_set_seekbar"
@@ -101,27 +95,41 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="atribuir seekbar"/>
+            android:text="atribuir seekbar" />
 
     </LinearLayout>
 
     <Switch
         android:id="@+id/switch_on_off"
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="16dp" />
 
     <CheckBox
         android:id="@+id/check_on_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="On / Off"/>
+        android:text="On / Off" />
 
-    <RadioButton
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        q
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/radio_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Radio On" />
+
+        <RadioButton
+            android:id="@+id/radio_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Radio Off" />
+    </RadioGroup>
 
 </LinearLayout>

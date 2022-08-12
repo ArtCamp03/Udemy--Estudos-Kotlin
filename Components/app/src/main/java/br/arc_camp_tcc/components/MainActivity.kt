@@ -9,8 +9,8 @@ import android.widget.*
 import br.arc_camp_tcc.components.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener
-, SeekBar.OnSeekBarChangeListener, CompoundButton.OnCheckedChangeListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener,
+    SeekBar.OnSeekBarChangeListener, CompoundButton.OnCheckedChangeListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -41,6 +41,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
 
         // checkBox
         binding.checkOnOff.setOnCheckedChangeListener(this)
+
+        // Radio Group
+        binding.radioOn.setOnCheckedChangeListener(this)
+        binding.radioOff.setOnCheckedChangeListener(this)
 
         loadSpinner()
 
@@ -82,26 +86,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
                 snake.setBackgroundTint(Color.BLACK)
 
                 snake.show()
-            }else if (v.id == R.id.button_get_spinner){
+            } else if (v.id == R.id.button_get_spinner) {
                 val selectedItem = binding.spinerStatic.selectedItem
                 val selectedItemId = binding.spinerStatic.selectedItemId
                 val selectedItemPosition = binding.spinerStatic.selectedItemPosition
 
                 toast("Position: $selectedItemId : $selectedItem")
-            }else if (v.id == R.id.button_set_spinner){
+            } else if (v.id == R.id.button_set_spinner) {
                 binding.spinerStatic.setSelection(2)
-            }else if (v.id == R.id.button_get_seekbar){
+            } else if (v.id == R.id.button_get_seekbar) {
                 toast("Seekbar: ${binding.seekbar}")
-            }else if (v.id == R.id.button_set_seekbar){
+            } else if (v.id == R.id.button_set_seekbar) {
                 toast("altearado com sucesso")
             }
-
         }
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         if (parent != null) {
-            if(parent.id == R.id.spiner_static){
+            if (parent.id == R.id.spiner_static) {
                 toast(parent?.getItemAtPosition(position).toString())
             }
         }
@@ -112,7 +115,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
     }
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        if(binding.seekbar.id == R.id.seekbar){
+        if (binding.seekbar.id == R.id.seekbar) {
             toast("Progress")
         }
     }
@@ -126,31 +129,36 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
-        if(buttonView.id == R.id.switch_on_off){
-            if(isChecked) {
+        if (buttonView.id == R.id.switch_on_off) {
+            if (isChecked) {
                 toast("true")
-            }else {
+            } else {
                 toast("false")
             }
             //binding.switchOnOff.isChecked = true
-        }else if(buttonView.id == R.id.check_on_off){
-            if(isChecked) {
+        } else if (buttonView.id == R.id.check_on_off) {
+            if (isChecked) {
                 toast("true")
-            }else {
+            } else {
                 toast("false")
             }
             // binding.checkOnOff.isChecked = true
+        } else if (buttonView.id == R.id.radio_on) {
+            toast("true")
+        } else if (buttonView.id == R.id.radio_off) {
+            toast("false")
         }
     }
+}
 
-    private fun loadSpinner(){
-        val mList = listOf("Gramas", "Kg", "Arroba", "Tonelada")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mList)
-        binding.spinerDinamic.adapter = adapter
-    }
+private fun loadSpinner() {
+    val mList = listOf("Gramas", "Kg", "Arroba", "Tonelada")
+    val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, mList)
+    binding.spinerDinamic.adapter = adapter
+}
 
-    private fun toast(str: String) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
-    }
+private fun toast(str: String) {
+    Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+}
 
 }
